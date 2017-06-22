@@ -7,7 +7,7 @@ public class Client {
 
     public static void main(String[] args) {
         MazeGame mazeGame = new MazeGame();
-        BombedMazeFactory bombedMazeFactory = new BombedMazeFactory();
+        BombedMazeFactory bombedMazeFactory = BombedMazeFactory.instance();
         mazeGame.createMaze(bombedMazeFactory);
     }
 }
