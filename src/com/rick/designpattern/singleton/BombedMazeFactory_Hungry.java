@@ -3,12 +3,14 @@ package com.rick.designpattern.singleton;
 /**
  * Created by MyPC on 2017/6/20.
  */
-public class BombedMazeFactory extends MazeFactory {
-    static {
-        register(BombedMazeFactory.class.getName(), new BombedMazeFactory());
+public class BombedMazeFactory_Hungry extends MazeFactory {
+    private static BombedMazeFactory_Hungry _instance = new BombedMazeFactory_Hungry();
+
+    private BombedMazeFactory_Hungry() {
     }
 
-    private BombedMazeFactory() {
+    public static BombedMazeFactory_Hungry instance() {
+        return _instance;
     }
 
     @Override

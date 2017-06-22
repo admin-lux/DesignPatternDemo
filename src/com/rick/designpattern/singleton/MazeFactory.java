@@ -7,16 +7,39 @@ import java.util.Map;
  * Created by MyPC on 2017/6/20.
  */
 public class MazeFactory {
-    private static MazeFactory _instance;
+    private static Map<String, MazeFactory> _instances = new HashMap<String, MazeFactory>();
+
+    static {
+        _instances.put(MazeFactory.class.getName(), new MazeFactory());
+    }
 
     protected MazeFactory() {
     }
 
     public static MazeFactory instance(String name) {
-        if (null == _instance) {
-            _instance = new MazeFactory();
+        if (null == name || "".equals(name)) {
+            name = MazeFactory.class.getName();
         }
-        return _instance;
+        if (null == _instances.get(name)) {
+            try {
+                _instances.put(name, lookUp(name));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+        return _instances.get(name);
+    }
+
+    public static void register(String name, MazeFactory mazeFactory) {
+        _instances.put(name, mazeFactory);
+    }
+
+    public static MazeFactory lookUp(String name) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        return _instances.put(name, (MazeFactory) Class.forName(name).newInstance());
     }
 
     public Maze makeMaxe() {
