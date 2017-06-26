@@ -6,8 +6,7 @@ package com.rick.designpattern.bridge2;
 public class Client {
 
     public static void main(String[] args) {
-        SmallBrushPenRefinedAbstraction smallBrushPenRefinedAbstraction = new SmallBrushPenRefinedAbstraction();
-        smallBrushPenRefinedAbstraction.setImplementorColor(new ConcreteImplementorBlack());
-        smallBrushPenRefinedAbstraction.operationDraw();
+
+        BrushPenFactory.instance().makeBrushPen().operationDraw();
     }
 }
