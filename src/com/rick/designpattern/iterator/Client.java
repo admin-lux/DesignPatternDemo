@@ -15,6 +15,7 @@ public class Client {
                 new Employee("e")
         };
         employees.add(employees1);
+        //外置迭代器实现
         ListIterator listIterator = new ListIterator(employees);
         ReverseListIterator reverseListIterator = new ReverseListIterator(employees);
         printEmployees(listIterator);
@@ -24,6 +25,7 @@ public class Client {
         printEmployees(reverseListIterator);
         reverseListIterator = null;
 
+        //外置迭代器，工厂方法实现
         Iterator iterator = employees.createIterator();
         System.out.println("-----------------");
         printEmployees(iterator);
@@ -31,6 +33,7 @@ public class Client {
 
 
         System.out.println("-----------------");
+        //内置迭代器实现
         PrintNEmployees printNEmployees = new PrintNEmployees(employees, 2);
         printNEmployees.traverser();
 
