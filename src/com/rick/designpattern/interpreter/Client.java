@@ -25,7 +25,6 @@ public class Client {
         AbstractExpression abstractExpression4 = new SubtractNonterminalExpression(
                 new TerminalExpression(context.getValue("a")), new TerminalExpression(context.getValue("b")));
         System.out.println(abstractExpression4.interpreter(context));
-
     }
 
 }
