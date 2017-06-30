@@ -4,7 +4,7 @@ package com.rick.designpattern.interpreter;
  * Created by MyPC on 2017/6/30.
  */
 public class MultiplyNonterminalExpression extends AbstractExpression {
-    private final AbstractExpression left, right;
+    private AbstractExpression left, right;
 
     public MultiplyNonterminalExpression(AbstractExpression left, AbstractExpression right) {
         this.left = left;
